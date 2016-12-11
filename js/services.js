@@ -18,3 +18,18 @@ app.factory('calculadorRotas', function(){
 		}
 	}
 });
+
+app.factory('mapeadorEnderecos', function($http){
+	return {
+		buscarEnderecoPeloCep: function(cep, callback){
+			$http.get('http://viacep.com.br/ws/' + cep + '/json/').then(function(response){
+				if(!response.data.erro)
+					callback(response);
+				else
+					console.error('Erro ao localizar-se o CEP de entrada!');
+			}, function(err){
+				console.log('Erro ao buscar o CEP!');
+			});
+		}
+	}
+});

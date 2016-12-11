@@ -6,6 +6,49 @@
 </head>
 <body ng-app="principal" ng-controller="entregasCtrl">
 
+<div class="container">
+	<div class="row">
+		<div class="page-header">
+			<h1>Controle de entregas</h1>
+		</div>
+	</div>
+	<div class="row well">
+		<div class="col-md-6">
+			<label>Descrição</label>
+			<input class="form-control" type="text" name="descricao" ng-model="descricao">
+		</div>
+		<div class="col-md-2">
+			<label>CEP</label>
+			<input class="form-control" type="text" name="destino" ng-model="destino">
+		</div>
+		<div class="col-md-2">
+			<br/>
+			<button ng-click="novaEntrega()" class="btn btn-primary">Entregar</button>
+		</div>
+	</div>
+	<div class="row well">
+		<table class="table table-hover table-striped">
+			<thead>
+				<th>Descrição</th>
+				<th>Origem</th>
+				<th>Destino</th>
+				<th>Distância</th>
+				<th>Custo estimado</th>
+				<th>Ações</th>
+			</thead>
+			<tbody>
+				<tr ng-repeat="entrega in entregas track by $index">
+					<td>{{entrega.descricao | uppercase}}</td>
+					<td>{{entrega.origem}}</td>
+					<td>{{entrega.destino}}</td>
+					<td>{{entrega.distancia}}</td>
+					<td>{{entrega.custoEstimado | currency}}</td>
+					<td><button class="btn btn-danger" ng-click="remover()">Remover</button></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</div>
 
 
 <!-- DEPENDÊNCIAS UTILIZADAS -->
