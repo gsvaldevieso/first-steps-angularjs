@@ -11,7 +11,7 @@ app.controller('entregasCtrl', function($scope, $http, calculadorRotas, mapeador
 			if(response == null) return;
 
 			calculadorRotas.calcularDistanciaEntreCidades("Maringá - PR", response.data.localidade + " - " + response.data.uf, function(data){
-				var valorDistancia = data.distance.replace( /(km|m)/g, '').trim();
+				var valorDistancia = data.distance.replace(/(km|m|\.)/g, "").replace(/\./g,"\,").trim();
 
 				$scope.adicionarEntrega({
 					descricao: $scope.descricao,
